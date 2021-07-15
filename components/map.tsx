@@ -1,6 +1,8 @@
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+// @ts-ignore
 import Railroad from "@/data/N02-20_RailroadSection.geojson";
+// @ts-ignore
 import Station from "@/data/N02-20_Station.geojson";
 
 const LAT = 35.68294;
