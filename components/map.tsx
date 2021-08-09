@@ -1,4 +1,4 @@
-import { LatLngExpression } from "leaflet";
+import { LatLngExpression, LatLngLiteral } from "leaflet";
 import {
   MapContainer,
   TileLayer,
@@ -22,10 +22,14 @@ function SetCenter({ center }: { center: LatLngExpression }) {
   return null;
 }
 
-function DragEvent() {
+function DragEvent({
+  setLatLng,
+}: {
+  setLatLng: (center: LatLngLiteral) => void;
+}) {
   useMapEvents({
     dragend: (e: any) => {
-      console.log("mapCenter", e.target.getCenter());
+      setLatLng(e.target.getCenter());
     },
   });
   return null;
@@ -34,9 +38,11 @@ function DragEvent() {
 const Map = ({
   format = "std",
   latlng = [LAT, LNG],
+  setLatLng = () => {},
 }: {
   format: String;
   latlng: LatLngExpression;
+  setLatLng: (center: LatLngLiteral) => void;
 }) => {
   const display = [
     "東日本旅客鉄道",
@@ -60,7 +66,7 @@ const Map = ({
   return (
     <MapContainer style={{ height: "300px", width: "400px" }}>
       <SetCenter center={latlng} />
-      <DragEvent />
+      <DragEvent setLatLng={setLatLng} />
       <TileLayer
         attribution="<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
         url={`https://cyberjapandata.gsi.go.jp/xyz/${format}/{z}/{x}/{y}.png`}
