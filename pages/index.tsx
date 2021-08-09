@@ -1,10 +1,12 @@
 import dynamic from "next/dynamic";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 const Home = () => {
   const loading = () => <p>A map is loading</p>;
 
-  // ref: https://stackoverflow.com/a/64634759/976917
+  const [latitude, setLatitude] = useState(35.68294);
+  const [longitude, setLongitude] = useState(139.76778);
+
   const Map = useMemo(
     () =>
       dynamic(() => import("../components/map"), {
@@ -15,7 +17,21 @@ const Home = () => {
   );
   return (
     <main>
-      <Map />
+      <label>latitude</label>
+      <input
+        type="number"
+        value={latitude}
+        onChange={(e) => setLatitude(Number(e.target.value))}
+      />
+      <label>longitude</label>
+      <input
+        type="number"
+        value={longitude}
+        onChange={(e) => setLongitude(Number(e.target.value))}
+      />
+      <button>描画</button>
+      <Map format="std" latlng={[latitude, longitude]} />
+      <Map format="pale" latlng={[latitude, longitude]} />
     </main>
   );
 };
