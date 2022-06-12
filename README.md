@@ -15,3 +15,12 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 出典
+
+国土地理院発行 標準地図
+国土地理院発行 20 万分 1 土地利用図
+国土地理院発行 土地条件図（初期整備版）
+国土地理院発行 色別標高図 (海域部は海上保安庁海洋情報部の資料を使用して作成)
+
+https://maps.gsi.go.jp/development/ichiran.html
