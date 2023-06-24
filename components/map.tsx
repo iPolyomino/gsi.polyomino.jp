@@ -2,7 +2,6 @@ import { LatLngExpression, LatLngLiteral } from "leaflet";
 import {
   MapContainer,
   TileLayer,
-  GeoJSON,
   useMap,
   useMapEvents,
 } from "react-leaflet";
@@ -46,24 +45,28 @@ const Map = ({
   format = "std",
   latlng = [LAT, LNG],
   zoom = ZOOM,
-  setLatLng = () => {},
-  setZoom = () => {},
+  setLatLng = () => { },
+  setZoom = () => { },
+  label = ""
 }: {
   format: string;
   latlng: LatLngExpression;
   zoom: number;
   setLatLng: (center: LatLngLiteral) => void;
   setZoom: (level: number) => void;
+  label?: String;
 }) => {
   return (
-    <MapContainer style={{ height: "45vh", width: "45vw" }}>
-      <SetCenter center={latlng} zoom={zoom} />
-      <DragEvent setLatLng={setLatLng} setZoom={setZoom} />
-      <TileLayer
-        attribution="<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
-        url={`https://cyberjapandata.gsi.go.jp/xyz/${format}/{z}/{x}/{y}.png`}
-      />
-    </MapContainer>
+    <div>
+      <MapContainer style={{ height: "45vh", width: "45vw" }}>
+        <SetCenter center={latlng} zoom={zoom} />
+        <DragEvent setLatLng={setLatLng} setZoom={setZoom} />
+        <TileLayer
+          attribution={`<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a> ${label}`}
+          url={`https://cyberjapandata.gsi.go.jp/xyz/${format}/{z}/{x}/{y}.png`}
+        />
+      </MapContainer>
+    </div>
   );
 };
 

@@ -53,6 +53,7 @@ const Home = () => {
           zoom={zoom}
           setLatLng={setLatLng}
           setZoom={setZoom}
+          label="標準地図"
         />
         <Map
           format="lum200k"
@@ -60,13 +61,15 @@ const Home = () => {
           zoom={zoom}
           setLatLng={setLatLng}
           setZoom={setZoom}
+          label="20万分1土地利用図（1982～1983年）<a href='https://cyberjapandata.gsi.go.jp/legend/lum200k_legend.jpg'>凡例</a>"
         />
         <Map
-          format="lcm25k"
+          format="lcm25k_2012"
           latlng={[latitude, longitude]}
           zoom={zoom}
           setLatLng={setLatLng}
           setZoom={setZoom}
+          label="数値地図25000（土地条件）<a href='https://cyberjapandata.gsi.go.jp/legend/lcm25k_2012/lc_legend.pdf'>凡例</a>"
         />
         <Map
           format="relief"
@@ -74,6 +77,7 @@ const Home = () => {
           zoom={zoom}
           setLatLng={setLatLng}
           setZoom={setZoom}
+          label="色別標高図"
         />
       </section>
       <footer>
