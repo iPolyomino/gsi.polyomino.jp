@@ -76,6 +76,32 @@ const Home = () => {
           setZoom={setZoom}
         />
       </section>
+      <footer>
+        <button onClick={() => {
+          setLatLng({ lat: 43.068611, lng: 141.350778 });
+        }}>Sapporo</button>
+        <button onClick={() => {
+          setLatLng({ lat: 38.260278, lng: 140.882222 });
+        }}>Sendai</button>
+        <button onClick={() => {
+          setLatLng({ lat: 35.68294, lng: 139.76778 });
+        }}>Tokyo</button>
+        <button onClick={() => {
+          setLatLng({ lat: 35.170694, lng: 136.881637 });
+        }}>Nagoya</button>
+        <button onClick={() => {
+          setLatLng({ lat: 34.701889, lng: 135.494972 });
+        }}>Osaka</button>
+        <button onClick={() => {
+          setLatLng({ lat: 34.39775, lng: 132.475472 });
+        }}>Hiroshima</button>
+        <button onClick={() => {
+          setLatLng({ lat: 33.59, lng: 130.420611 });
+        }}>Hakata</button>
+        <button onClick={() => {
+          setLatLng({ lat: 26.206472, lng: 127.65225 });
+        }}>Naha</button>
+      </footer>
     </main>
   );
 };
