@@ -62,7 +62,7 @@ const Map = ({
         <SetCenter center={latlng} zoom={zoom} />
         <DragEvent setLatLng={setLatLng} setZoom={setZoom} />
         <TileLayer
-          attribution={`<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a> ${label}`}
+          attribution={`<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank' rel='noopener noreferrer'>地理院タイル</a> ${label}`}
           url={`https://cyberjapandata.gsi.go.jp/xyz/${format}/{z}/{x}/{y}.png`}
         />
       </MapContainer>
