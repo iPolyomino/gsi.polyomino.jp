@@ -4,10 +4,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+
+.header{
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 16px;
+  grid-gap: 0;
+}
+
+.mapContainer {
+  height: 45vh;
+  width: 50vw;
+}
+
+.footer{
+  height: 100%;
+  display: flex;
+  align-items: center;
 }

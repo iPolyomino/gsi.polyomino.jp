@@ -26,7 +26,7 @@ const Home = () => {
   );
   return (
     <main className={styles.main}>
-      <header>
+      <header className={styles.header}>
         <label>latitude</label>
         <input
           type="number"
@@ -80,7 +80,7 @@ const Home = () => {
           label="色別標高図"
         />
       </section>
-      <footer>
+      <footer className={styles.footer}>
         <button onClick={() => {
           setLatLng({ lat: 43.068611, lng: 141.350778 });
         }}>Sapporo</button>

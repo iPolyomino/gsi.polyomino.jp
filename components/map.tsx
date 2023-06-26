@@ -7,6 +7,8 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
+import styles from "@/styles/Home.module.css";
+
 const LAT = 35.68294;
 const LNG = 139.76778;
 const ZOOM = 14;
@@ -57,16 +59,14 @@ const Map = ({
   label?: String;
 }) => {
   return (
-    <div>
-      <MapContainer style={{ height: "45vh", width: "45vw" }}>
-        <SetCenter center={latlng} zoom={zoom} />
-        <DragEvent setLatLng={setLatLng} setZoom={setZoom} />
-        <TileLayer
-          attribution={`<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank' rel='noopener noreferrer'>地理院タイル</a> ${label}`}
-          url={`https://cyberjapandata.gsi.go.jp/xyz/${format}/{z}/{x}/{y}.png`}
-        />
-      </MapContainer>
-    </div>
+    <MapContainer className={styles.mapContainer}>
+      <SetCenter center={latlng} zoom={zoom} />
+      <DragEvent setLatLng={setLatLng} setZoom={setZoom} />
+      <TileLayer
+        attribution={`<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank' rel='noopener noreferrer'>地理院タイル</a> ${label}`}
+        url={`https://cyberjapandata.gsi.go.jp/xyz/${format}/{z}/{x}/{y}.png`}
+      />
+    </MapContainer>
   );
 };
 
