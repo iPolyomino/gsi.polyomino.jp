@@ -7,11 +7,11 @@ import styles from "@/styles/Home.module.css";
 
 const Home = () => {
   const router = useRouter();
-
   const [latitude, setLatitude] = useState(35.68294);
   const [longitude, setLongitude] = useState(139.76778);
   const [zoom, setZoom] = useState(14);
 
+  // initialize map center
   useEffect(() => {
     if (!router.isReady) return;
     const { lat, lng, zoom } = router.query;
@@ -22,13 +22,20 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady]);
 
+  // update query parameters
+  useEffect(() => {
+    if (!router.isReady) return;
+    router.query.lat = latitude.toString();
+    router.query.lng = longitude.toString();
+    router.query.zoom = zoom.toString();
+    router.push(router);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [latitude, longitude, zoom]);
+
   const setLatLng = (center: LatLngLiteral) => {
     setLatitude(center.lat);
     setLongitude(center.lng);
-    router.query.lat = center.lat.toString();
-    router.query.lng = center.lng.toString();
-    router.query.zoom = zoom.toString();
-    router.push(router);
   };
 
   const loading = () => <p>A map is loading</p>;
