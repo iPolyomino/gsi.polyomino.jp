@@ -1,20 +1,37 @@
 import dynamic from "next/dynamic";
-import { useMemo, useState } from "react";
+import { useRouter } from 'next/router'
+import { useMemo, useState, useEffect } from "react";
 import { LatLngLiteral } from "leaflet";
 
 import styles from "@/styles/Home.module.css";
 
 const Home = () => {
-  const loading = () => <p>A map is loading</p>;
+  const router = useRouter();
 
   const [latitude, setLatitude] = useState(35.68294);
   const [longitude, setLongitude] = useState(139.76778);
   const [zoom, setZoom] = useState(14);
 
+  useEffect(() => {
+    if (!router.isReady) return;
+    const { lat, lng, zoom } = router.query;
+    if (lat !== undefined && !Array.isArray(lat)) setLatitude(parseFloat(lat));
+    if (lng !== undefined && !Array.isArray(lng)) setLongitude(parseFloat(lng));
+    if (zoom !== undefined && !Array.isArray(zoom)) setZoom(parseInt(zoom));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady]);
+
   const setLatLng = (center: LatLngLiteral) => {
     setLatitude(center.lat);
     setLongitude(center.lng);
+    router.query.lat = center.lat.toString();
+    router.query.lng = center.lng.toString();
+    router.query.zoom = zoom.toString();
+    router.push(router);
   };
+
+  const loading = () => <p>A map is loading</p>;
 
   const Map = useMemo(
     () =>
